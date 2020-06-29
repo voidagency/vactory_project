@@ -1,0 +1,26 @@
+{
+  "patches": {
+    "drupal/simplify_menu": {
+      "Add support for active menu trails.": "patches/simplify_menu-adds-active-trail-parameter-2882867-5.patch",
+      "Add support for options.": "patches/simplify_menu-support-options.patch"
+    },
+    "drupal/features": {
+      "Export config translation": "https://www.drupal.org/files/issues/features_export-config-translation-2869336-2.patch"
+    },
+    "drupal/core": {
+      "Add internal path check to blocks visibility pages evaluation.": "patches/block-visibility-pages-paths-evaluate.patch"
+    },
+    "drupal/rate": {
+      "Make rate available for all node display mode.": "patches/rate-add-rate-to-all-node-display-mode.patch"
+    },
+    "drupal/oauth_login_oauth2": {
+      "Store ressourceOwner into a session variable.": "patches/oauth-login-oauth2-add-resource-owner-to-session.patch"
+    },
+    "drupal/social_auth_microsoft": {
+      "Fixing call to function on null.": "patches/microsoft_social_auth.patch"
+    }
+  },
+  "patches-ignore": {
+
+  }
+}

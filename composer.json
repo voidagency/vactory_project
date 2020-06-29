@@ -1,0 +1,129 @@
+{
+    "name": "voidagency/vactory-project",
+    "description": "Project template for Vactory.",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://www.void.fr",
+    "authors": [
+        {
+            "name": "VOID",
+            "email": "admin@void.fr"
+        }
+    ],
+    "support": {
+        "docs": "https://www.void.fr",
+        "chat": "https://www.void.fr"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "ckeditor/templates",
+                "type": "drupal-library",
+                "version": "4.11.1",
+                "dist": {
+                    "type": "zip",
+                    "url": "https://void-factory.s3.amazonaws.com/Drupal8/Composer/templates_4.11.1.zip",
+                    "reference": "master"
+                }
+            }
+        }
+    ],
+    "require": {
+        "composer/installers": "^1.2",
+        "cweagans/composer-patches": "^1.6",
+        "drupal/core-composer-scaffold": "^8.9.1",
+        "drupal/core-project-message": "^8.9.1",
+        "drupal/core-recommended": "^8.9.1",
+        "voidagency/vactory": "^2.1"
+    },
+    "require-dev": {
+        "drupal/core-dev": "^8.9.1",
+        "vijaycs85/drupal-quality-checker": "^1.2"
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "drupal-scaffold": {
+            "locations": {
+                "web-root": "web"
+            },
+            "file-mapping": {
+                "[web-root]/sites/default/settings.php": {
+                    "mode": "replace",
+                    "path": "assets/settings.php",
+                    "overwrite": false
+                },
+                "[web-root]/sites/default/settings.vactory.php": {
+                    "mode": "replace",
+                    "path": "assets/settings.vactory.php",
+                    "overwrite": false
+                },
+                "[web-root]/sites/default/services.yml": {
+                    "mode": "replace",
+                    "path": "assets/services.yml",
+                    "overwrite": false
+                }
+            }
+        },
+        "installer-paths": {
+            "web/core": [
+                "type:drupal-core"
+            ],
+            "web/libraries/{$name}": [
+                "type:drupal-library"
+            ],
+            "web/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "web/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "web/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/Commands/contrib/{$name}": [
+                "type:drupal-drush"
+            ],
+            "web/modules/custom/{$name}": [
+                "type:drupal-custom-module"
+            ],
+            "web/themes/custom/{$name}": [
+                "type:drupal-custom-theme"
+            ]
+        },
+        "drupal-core-project-message": {
+            "include-keys": [
+                "homepage",
+                "support"
+            ],
+            "post-create-project-cmd-message": [
+                "<bg=blue;fg=white>                                                         </>",
+                "<bg=blue;fg=white>  Congratulations, you’ve installed the Vactory codebase  </>",
+                "<bg=blue;fg=white>                                                         </>",
+                "",
+                "<bg=yellow;fg=black>Next steps</>:",
+                "  * Install the site: TODO",
+                "  * Read the user guide: TODO",
+                "  * Get support: TODO",
+                "  * Get involved with the community:",
+                "      TODO",
+                "  * Remove the plugin that prints this message:",
+                "      composer remove drupal/core-project-message"
+            ]
+        },
+        "enable-patching": true,
+        "patches-file": "composer.patches.json",
+        "composer-exit-on-patch-failure": true
+    }
+}
