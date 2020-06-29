@@ -3,11 +3,6 @@
 // @codingStandardsIgnoreFile
 
 /**
- * CONFIG SYNC.
- */
-$settings['config_sync_directory'] = 'profiles/contrib/vactory_decoupled/config/sync';
-
-/**
  * Suppress ITOK.
  */
 $config['image.settings']['suppress_itok_output'] = TRUE;
@@ -43,3 +38,15 @@ $settings['hash_salt'] = 'P6qFdKCJbZGT98t7PlxYlEOLLqKanlyT';
  */
 $config['system.performance']['css']['preprocess'] = FALSE;
 $config['system.performance']['js']['preprocess'] = FALSE;
+
+/**
+ * Redirect all site mails to one mail address in local environment.
+ * Into your settings.local.php file override $settings['vactory_mail_redirect']
+ * by specifying the address to which all site mails should be delivered.
+ *
+ * Example:
+ * $settings['vactory_mail_redirect'] = 'toto@void.fr';
+ *
+ * From now on, all site mails will be redirected to toto@void.fr address.
+ */
+# $settings['vactory_mail_redirect'] = 'toto@void.fr';

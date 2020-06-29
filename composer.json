@@ -73,6 +73,51 @@
                     "mode": "replace",
                     "path": "assets/services.yml",
                     "overwrite": false
+                },
+                "[web-root]/.htaccess": {
+                    "mode": "replace",
+                    "path": "assets/.htaccess",
+                    "overwrite": false
+                },
+                "[web-root]/.htpasswd": {
+                    "mode": "replace",
+                    "path": "assets/.htpasswd",
+                    "overwrite": false
+                },
+                "[web-root]/robots.txt": {
+                    "mode": "replace",
+                    "path": "assets/robots.txt",
+                    "overwrite": false
+                },
+                "[web-root]/scripts/composer/ExcludeFilesFilterIterator.php": {
+                    "mode": "replace",
+                    "path": "assets/scripts/composer/ExcludeFilesFilterIterator.php",
+                    "overwrite": false
+                },
+                "[web-root]/scripts/composer/ScriptHandler.php": {
+                    "mode": "replace",
+                    "path": "assets/scripts/composer/ScriptHandler.php",
+                    "overwrite": false
+                },
+                "[web-root]/scripts/composer/ThemeScriptHandler.php": {
+                    "mode": "replace",
+                    "path": "assets/scripts/composer/ThemeScriptHandler.php",
+                    "overwrite": false
+                },
+                "[web-root]/scripts/system-information-tool/vsys-info-centos.sh": {
+                    "mode": "replace",
+                    "path": "assets/scripts/system-information-tool/vsys-info-centos.sh",
+                    "overwrite": false
+                },
+                "[web-root]/scripts/system-information-tool/vsys-info-debian.sh": {
+                    "mode": "replace",
+                    "path": "assets/scripts/system-information-tool/vsys-info-debian.sh",
+                    "overwrite": false
+                },
+                "[web-root]/scripts/.htaccess": {
+                    "mode": "replace",
+                    "path": "assets/scripts/.htaccess",
+                    "overwrite": false
                 }
             }
         },

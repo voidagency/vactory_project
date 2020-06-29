@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4560b42fcdc1b4aa1c13fc9c4c1127a4",
+    "content-hash": "9ff2da1adea64e498ba93ad15787625a",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -2207,6 +2207,9 @@
                         "[web-root]/profiles/README.txt": "assets/scaffold/files/profiles.README.txt",
                         "[web-root]/themes/README.txt": "assets/scaffold/files/themes.README.txt"
                     }
+                },
+                "patches_applied": {
+                    "Add internal path check to blocks visibility pages evaluation.": "https://gist.githubusercontent.com/b-khouy/d796ede15da1e0b69fa22af52ad55b04/raw/19e54a007837537dd7de97456ab0e1ad0b9d3cf6/block-visibility-pages-paths-evaluate.patch"
                 }
             },
             "autoload": {
@@ -3466,6 +3469,9 @@
                     "services": {
                         "drush.services.yml": "^9"
                     }
+                },
+                "patches_applied": {
+                    "Export config translation": "https://www.drupal.org/files/issues/features_export-config-translation-2869336-2.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -5326,6 +5332,9 @@
                         "status": "covered",
                         "message": "Covered by Drupal's security advisory policy"
                     }
+                },
+                "patches_applied": {
+                    "Store ressourceOwner into a session variable.": "https://gist.githubusercontent.com/b-khouy/d796ede15da1e0b69fa22af52ad55b04/raw/19e54a007837537dd7de97456ab0e1ad0b9d3cf6/oauth-login-oauth2-add-resource-owner-to-session.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -5694,6 +5703,9 @@
                         "status": "not-covered",
                         "message": "Alpha releases are not covered by Drupal security advisories."
                     }
+                },
+                "patches_applied": {
+                    "Make rate available for all node display mode.": "https://gist.githubusercontent.com/b-khouy/d796ede15da1e0b69fa22af52ad55b04/raw/19e54a007837537dd7de97456ab0e1ad0b9d3cf6/rate-add-rate-to-all-node-display-mode.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -6411,6 +6423,10 @@
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
                     }
+                },
+                "patches_applied": {
+                    "Add support for active menu trails.": "https://gist.githubusercontent.com/b-khouy/d796ede15da1e0b69fa22af52ad55b04/raw/19e54a007837537dd7de97456ab0e1ad0b9d3cf6/simplify_menu-adds-active-trail-parameter-2882867-5.patch",
+                    "Add support for options.": "https://gist.githubusercontent.com/b-khouy/d796ede15da1e0b69fa22af52ad55b04/raw/19e54a007837537dd7de97456ab0e1ad0b9d3cf6/simplify_menu-support-options.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -6850,6 +6866,9 @@
                         "status": "not-covered",
                         "message": "Alpha releases are not covered by Drupal security advisories."
                     }
+                },
+                "patches_applied": {
+                    "Fixing call to function on null.": "https://gist.githubusercontent.com/b-khouy/d796ede15da1e0b69fa22af52ad55b04/raw/19e54a007837537dd7de97456ab0e1ad0b9d3cf6/microsoft_social_auth.patch"
                 }
             },
             "notification-url": "https://packages.drupal.org/8/downloads",
@@ -8169,23 +8188,24 @@
         },
         {
             "name": "drupal/xmlsitemap",
-            "version": "1.0.0-rc1",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://git.drupalcode.org/project/xmlsitemap.git",
-                "reference": "8.x-1.0-rc1"
+                "reference": "8.x-1.0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://ftp.drupal.org/files/projects/xmlsitemap-8.x-1.0-rc1.zip",
-                "reference": "8.x-1.0-rc1",
-                "shasum": "9b88caa55f9a45b8c89a1284d2db739fbf0c830f"
+                "url": "https://ftp.drupal.org/files/projects/xmlsitemap-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "29395aa9eea8a58edefa3f9e0999d4d3a7f6b08f"
             },
             "require": {
-                "drupal/core": "^8 || ^9",
+                "drupal/core": "^8.8 || ^9",
                 "ext-xmlwriter": "*"
             },
             "require-dev": {
+                "drupal/metatag": "^1.0",
                 "drupal/robotstxt": "^1.0"
             },
             "suggest": {
@@ -8194,11 +8214,11 @@
             "type": "drupal-module",
             "extra": {
                 "drupal": {
-                    "version": "8.x-1.0-rc1",
-                    "datestamp": "1576705928",
+                    "version": "8.x-1.0",
+                    "datestamp": "1593451044",
                     "security-coverage": {
-                        "status": "not-covered",
-                        "message": "RC releases are not covered by Drupal security advisories."
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
                     }
                 },
                 "drush": {
@@ -8252,7 +8272,7 @@
             "description": "Creates XML sitemaps for the site",
             "homepage": "https://www.drupal.org/project/xmlsitemap",
             "support": {
-                "source": "http://cgit.drupalcode.org/xmlsitemap",
+                "source": "https://git.drupalcode.org/project/xmlsitemap",
                 "issues": "http://drupal.org/project/issues/xmlsitemap"
             }
         },
@@ -12867,12 +12887,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/voidagency/vactory.git",
-                "reference": "a150bc257411b55b09ac59d0417f00b3dd104fa8"
+                "reference": "22b235d76c2b353028682b4637411f3abaf19d9f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/voidagency/vactory/zipball/a150bc257411b55b09ac59d0417f00b3dd104fa8",
-                "reference": "a150bc257411b55b09ac59d0417f00b3dd104fa8",
+                "url": "https://api.github.com/repos/voidagency/vactory/zipball/22b235d76c2b353028682b4637411f3abaf19d9f",
+                "reference": "22b235d76c2b353028682b4637411f3abaf19d9f",
                 "shasum": ""
             },
             "require": {
@@ -13011,6 +13031,28 @@
                             "has": "^(Add|Fix|Change|Update|Documentation):|^Merged|^merged"
                         }
                     }
+                },
+                "enable-patching": true,
+                "patches": {
+                    "drupal/simplify_menu": {
+                        "Add support for active menu trails.": "https://gist.githubusercontent.com/b-khouy/d796ede15da1e0b69fa22af52ad55b04/raw/19e54a007837537dd7de97456ab0e1ad0b9d3cf6/simplify_menu-adds-active-trail-parameter-2882867-5.patch",
+                        "Add support for options.": "https://gist.githubusercontent.com/b-khouy/d796ede15da1e0b69fa22af52ad55b04/raw/19e54a007837537dd7de97456ab0e1ad0b9d3cf6/simplify_menu-support-options.patch"
+                    },
+                    "drupal/features": {
+                        "Export config translation": "https://www.drupal.org/files/issues/features_export-config-translation-2869336-2.patch"
+                    },
+                    "drupal/core": {
+                        "Add internal path check to blocks visibility pages evaluation.": "https://gist.githubusercontent.com/b-khouy/d796ede15da1e0b69fa22af52ad55b04/raw/19e54a007837537dd7de97456ab0e1ad0b9d3cf6/block-visibility-pages-paths-evaluate.patch"
+                    },
+                    "drupal/rate": {
+                        "Make rate available for all node display mode.": "https://gist.githubusercontent.com/b-khouy/d796ede15da1e0b69fa22af52ad55b04/raw/19e54a007837537dd7de97456ab0e1ad0b9d3cf6/rate-add-rate-to-all-node-display-mode.patch"
+                    },
+                    "drupal/oauth_login_oauth2": {
+                        "Store ressourceOwner into a session variable.": "https://gist.githubusercontent.com/b-khouy/d796ede15da1e0b69fa22af52ad55b04/raw/19e54a007837537dd7de97456ab0e1ad0b9d3cf6/oauth-login-oauth2-add-resource-owner-to-session.patch"
+                    },
+                    "drupal/social_auth_microsoft": {
+                        "Fixing call to function on null.": "https://gist.githubusercontent.com/b-khouy/d796ede15da1e0b69fa22af52ad55b04/raw/19e54a007837537dd7de97456ab0e1ad0b9d3cf6/microsoft_social_auth.patch"
+                    }
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -13018,7 +13060,7 @@
                 "GPL-2.0-or-later"
             ],
             "description": "Vactory is a custom Drupal profile which is developed and released by VOID Agency.",
-            "time": "2020-06-29T08:14:10+00:00"
+            "time": "2020-06-29T14:04:47+00:00"
         },
         {
             "name": "webflo/drupal-finder",
