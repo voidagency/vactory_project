@@ -1,0 +1,30 @@
+/* Icon Pop */
+@keyframes #{$nameSpace}-icon-pop {
+	50% {
+		transform: scale(1.5);
+	}
+}
+
+@mixin icon-pop {
+	@include hacks();
+	transition-duration: $mediumDuration;
+
+	.hvr-icon {
+		transform: translateZ(0);
+		transition-duration: $mediumDuration;
+		transition-property: transform;
+		transition-timing-function: ease-out;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+
+		.hvr-icon {
+			animation-name: #{$nameSpace}-icon-pop;
+			animation-duration: $mediumDuration;
+			animation-timing-function: linear;
+			animation-iteration-count: 1;
+		}
+	}
+}

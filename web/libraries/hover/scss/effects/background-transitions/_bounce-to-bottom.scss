@@ -1,0 +1,31 @@
+/* Bounce To Bottom */
+@mixin bounce-to-bottom {
+	@include hacks();
+	position: relative;
+	transition-property: color;
+	transition-duration: $slowDuration;
+
+	&:before {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		transform: scaleY(0);
+		transform-origin: 50% 0;
+		transition-property: transform;
+		transition-duration: $slowDuration;
+		transition-timing-function: ease-out;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		&:before {
+			transform: scaleY(1);
+			transition-timing-function: cubic-bezier(.52,1.64,.37,.66);
+		}
+	}
+}

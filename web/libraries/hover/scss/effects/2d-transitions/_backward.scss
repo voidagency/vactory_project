@@ -1,0 +1,12 @@
+/* Backward */
+@mixin backward {
+	@include hacks();
+	transition-duration: $mediumDuration;
+	transition-property: transform;
+
+	&:hover,
+	&:focus,
+	&:active {
+		transform: translateX(-8px);
+	}
+}

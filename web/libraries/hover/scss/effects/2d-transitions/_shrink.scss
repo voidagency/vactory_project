@@ -1,0 +1,12 @@
+/* Shrink */
+@mixin shrink {
+	@include hacks();
+	transition-duration: $mediumDuration;
+	transition-property: transform;
+
+	&:hover,
+	&:focus,
+	&:active {
+		transform: scale(.9);
+	}
+}

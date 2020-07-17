@@ -1,0 +1,31 @@
+/* Bounce To Left */
+@mixin bounce-to-left {
+	@include hacks();
+	position: relative;
+	transition-property: color;
+	transition-duration: $slowDuration;
+
+	&:before {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		transform: scaleX(0);
+		transform-origin: 100% 50%;
+		transition-property: transform;
+		transition-duration: $slowDuration;
+		transition-timing-function: ease-out;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		&:before {
+			transform: scaleX(1);
+			transition-timing-function: cubic-bezier(.52,1.64,.37,.66);
+		}
+	}
+}

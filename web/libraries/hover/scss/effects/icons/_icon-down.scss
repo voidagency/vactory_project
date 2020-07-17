@@ -1,0 +1,32 @@
+/* Icon Down */
+@keyframes #{$nameSpace}-icon-down {
+	0%,
+	50%,
+	100% {
+		transform: translateY(0);
+	}
+	25%,
+	75% {
+		transform: translateY(6px);
+	}
+}
+
+/* Icon Down */
+@mixin icon-down {
+	@include hacks();
+
+	.hvr-icon {
+		transform: translateZ(0);
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+
+		.hvr-icon {
+			animation-name: #{$nameSpace}-icon-down;
+			animation-duration: .75s;
+			animation-timing-function: ease-out;
+		}
+	}
+}

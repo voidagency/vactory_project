@@ -1,0 +1,12 @@
+/* Hollow */
+@mixin hollow {
+	@include hacks();
+	transition-duration: $mediumDuration;
+	transition-property: background;
+
+	&:hover,
+	&:focus,
+	&:active {
+		background: none;
+	}
+}

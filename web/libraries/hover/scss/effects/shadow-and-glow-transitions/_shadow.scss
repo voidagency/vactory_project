@@ -1,0 +1,12 @@
+/* Shadow */
+@mixin shadow {
+	@include hacks();
+	transition-duration: $mediumDuration;
+	transition-property: box-shadow;
+
+	&:hover,
+	&:focus,
+	&:active {
+		box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+	}
+}

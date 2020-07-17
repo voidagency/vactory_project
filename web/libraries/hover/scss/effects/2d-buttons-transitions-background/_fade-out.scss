@@ -1,0 +1,22 @@
+@mixin fade-out {
+    @include global;
+    &:before{
+        background-color: $bgColor;
+    }
+    &:after{
+        opacity: 0;
+        transform: scale(1.2,1.2);
+    }
+    &:hover{
+        background-color: transparent;
+        border-color: transparent;
+        &:before{
+            opacity: 0 ;
+            transform: scale(0.5,0.5);
+        }
+        &:after{
+            opacity: 1;
+            transform: scale(1,1);
+        }
+    }
+}

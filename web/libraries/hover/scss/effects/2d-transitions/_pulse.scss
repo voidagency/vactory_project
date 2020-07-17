@@ -1,0 +1,23 @@
+/* Pulse */
+@keyframes #{$nameSpace}-pulse {
+	25% {
+		transform: scale(1.1);
+	}
+
+	75% {
+		transform: scale(.9);
+	}
+}
+
+@mixin pulse {
+	@include hacks();
+
+	&:hover,
+	&:focus,
+	&:active {
+		animation-name: #{$nameSpace}-pulse;
+		animation-duration: 1s;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+	}
+}

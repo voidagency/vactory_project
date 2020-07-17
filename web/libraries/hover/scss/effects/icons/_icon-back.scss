@@ -1,0 +1,21 @@
+/* Icon Back */
+@mixin icon-back {
+	@include hacks();
+	transition-duration: $fastDuration;
+
+	.hvr-icon {
+		transform: translateZ(0);
+		transition-duration: $fastDuration;
+		transition-property: transform;
+		transition-timing-function: ease-out;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+
+		.hvr-icon {
+			transform: translateX(-4px);
+		}
+	}
+}

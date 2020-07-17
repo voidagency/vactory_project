@@ -1,0 +1,20 @@
+/* Pulse Shrink */
+@keyframes #{$nameSpace}-pulse-shrink {
+	to {
+		transform: scale(.9);
+	}
+}
+
+@mixin pulse-shrink {
+	@include hacks();
+
+	&:hover,
+	&:focus,
+	&:active {
+		animation-name: #{$nameSpace}-pulse-shrink;
+		animation-duration: $mediumDuration;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+		animation-direction: alternate;
+	}
+}

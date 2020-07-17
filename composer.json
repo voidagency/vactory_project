@@ -39,7 +39,8 @@
         "drupal/core-composer-scaffold": "^8.9.1",
         "drupal/core-project-message": "^8.9.1",
         "drupal/core-recommended": "^8.9.1",
-        "voidagency/vactory": "^2.0"
+        "voidagency/vactory": "^2.0",
+        "voidagency/vactory_theme": "^1.0"
     },
     "require-dev": {
         "drupal/core-dev": "^8.9.1",
@@ -52,6 +53,38 @@
     "prefer-stable": true,
     "config": {
         "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "Drupal\\Core\\Composer\\": "core/lib/Drupal/Core/Composer"
+        },
+        "classmap": [
+            "assets/scripts/composer"
+        ]
+    },
+    "scripts": {
+        "pre-autoload-dump": "Drupal\\Core\\Composer\\Composer::preAutoloadDump",
+        "post-autoload-dump": [
+            "Drupal\\Core\\Composer\\Composer::ensureHtaccess"
+        ],
+        "post-package-install": "Drupal\\Core\\Composer\\Composer::vendorTestCodeCleanup",
+        "post-package-update": "Drupal\\Core\\Composer\\Composer::vendorTestCodeCleanup",
+        "pre-install-cmd": [
+            "VoidFactory\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "pre-update-cmd": [
+            "VoidFactory\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "post-install-cmd": [
+            "VoidFactory\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "post-update-cmd": [
+            "VoidFactory\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "create-subtheme": [
+            "VoidFactory\\composer\\ThemeScriptHandler::checkRequirement",
+            "VoidFactory\\composer\\ThemeScriptHandler::createTheme"
+        ]
     },
     "extra": {
         "drupal-scaffold": {

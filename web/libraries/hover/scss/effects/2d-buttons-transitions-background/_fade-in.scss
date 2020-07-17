@@ -1,0 +1,18 @@
+@mixin fade-in {
+    @include global;
+    &:after{
+        opacity: 0;
+        background-color: $bgColor;
+        transform: scale(0.5,0.5);
+    }
+    &:hover{
+        &:before{
+            opacity: 0;
+            transform: scale(1.2,1.2);
+        }
+        &:after{
+            opacity: 1 ;
+            transform: scale(1,1);
+        }
+    }
+}

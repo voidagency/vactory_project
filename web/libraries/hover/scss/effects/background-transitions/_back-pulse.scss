@@ -1,0 +1,23 @@
+/* Back Pulse */
+@keyframes #{$nameSpace}-back-pulse {
+	50% {
+		opacity: 0.75;
+	}
+}
+
+@mixin back-pulse {
+	@include hacks();
+	overflow: hidden;
+	transition-duration: $slowDuration;
+	transition-property: "color: background-color";
+
+	&:hover,
+	&:focus,
+	&:active {
+		animation-name: #{$nameSpace}-back-pulse;
+		animation-duration: 1s;
+		animation-delay: $slowDuration;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+	}
+}

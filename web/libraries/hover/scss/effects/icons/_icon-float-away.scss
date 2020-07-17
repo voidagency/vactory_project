@@ -1,0 +1,32 @@
+/* Icon Float Away */
+@keyframes #{$nameSpace}-icon-float-away {
+	0% {
+		opacity: 1;
+	}
+
+	100% {
+		opacity: 0;
+		transform: translateY(-1em);
+	}
+}
+
+/* Icon Float Away */
+@mixin icon-float-away {
+	@include hacks();
+
+	.hvr-icon {
+		transform: translateZ(0);
+		animation-duration: #{$slowDuration};
+		animation-fill-mode: forwards;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+
+		.hvr-icon {
+			animation-name: #{$nameSpace}-icon-float-away;
+			animation-timing-function: ease-out;
+		}
+	}
+}

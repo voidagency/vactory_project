@@ -1,0 +1,32 @@
+/* Icon Up */
+@keyframes #{$nameSpace}-icon-up {
+	0%,
+	50%,
+	100% {
+		transform: translateY(0);
+	}
+	25%,
+	75% {
+		transform: translateY(-6px);
+	}
+}
+
+/* Icon Up */
+@mixin icon-up {
+	@include hacks();
+
+	.hvr-icon {
+		transform: translateZ(0);
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+
+		.hvr-icon {
+			animation-name: #{$nameSpace}-icon-up;
+			animation-duration: .75s;
+			animation-timing-function: ease-out;
+		}
+	}
+}

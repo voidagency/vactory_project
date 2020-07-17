@@ -1,0 +1,49 @@
+// skin style hvr-btn
+@mixin hvr-background {
+	@each $color, $value in $theme-colors {
+		&.btn-outline-#{$color} {
+			&:before {
+				background-color: $value;
+			}
+			&:hover {
+				background-color: transparent;
+			}
+		}
+		&.btn-#{$color} {
+			&:before {
+				background-color: darken($value, 7.5%);
+			}
+			&:hover {
+				background-color: $value;
+			}
+		}
+	}
+}
+
+@mixin hvr-background-fade {
+  @each $color, $value in $theme-colors {
+    &.btn-#{$color} {
+      &:before {
+        background-color: $value;
+      }
+    }
+  }
+}
+
+@mixin hvr-box-shadow {
+  @each $color, $value in $theme-colors {
+    &.btn-#{$color} {
+      box-shadow: inset 0 0 0 $borderWidth $value, 0 0 1px rgba(0, 0, 0, 0);
+    }
+  }
+}
+
+@mixin hvr-border {
+  @each $color, $value in $theme-colors {
+    &.btn-#{$color} {
+      &:before {
+        border-color: $value;
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+/* Icon Pulse Shrink */
+@keyframes #{$nameSpace}-icon-pulse-shrink {
+	to {
+		transform: scale(.8);
+	}
+}
+
+@mixin icon-pulse-shrink {
+	@include hacks();
+	
+	.hvr-icon {
+		transform: translateZ(0);
+		transition-timing-function: ease-out;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+
+		.hvr-icon {
+			animation-name: #{$nameSpace}-icon-pulse-shrink;
+			animation-duration: $mediumDuration;
+			animation-timing-function: linear;
+			animation-iteration-count: infinite;
+			animation-direction: alternate;
+		}
+	}
+}

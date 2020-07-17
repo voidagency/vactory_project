@@ -1,0 +1,23 @@
+/* Push */
+@keyframes #{$nameSpace}-push {
+	50% {
+		transform: scale(.8);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+@mixin push {
+	@include hacks();
+
+	&:hover,
+	&:focus,
+	&:active {
+		animation-name: #{$nameSpace}-push;
+		animation-duration: .3s;
+		animation-timing-function: linear;
+		animation-iteration-count: 1;
+	}
+}

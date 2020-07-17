@@ -1,0 +1,18 @@
+@mixin flash-borders {
+    @include global;
+    border: 0;
+    &:before{
+        opacity: 0;
+        border-top: 1px solid;
+        border-bottom: 1px solid;
+        transform: scale(0.1, 1);
+    
+    }
+    &:hover {
+        &:before{
+            opacity: 1;	
+            transform: scale(1, 1);	
+        }
+        background-color:transparent;
+    }
+}

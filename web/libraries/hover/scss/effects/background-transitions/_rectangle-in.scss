@@ -1,0 +1,29 @@
+/* Rectangle In */
+@mixin rectangle-in {
+	@include hacks();
+	position: relative;
+	transition-property: color;
+	transition-duration: $mediumDuration;
+
+	&:before {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		transform: scale(1);
+		transition-property: transform;
+		transition-duration: $mediumDuration;
+		transition-timing-function: ease-in;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+		&:before {
+			transform: scale(0);
+		}
+	}
+}

@@ -1,0 +1,18 @@
+@mixin bounce-in-down {
+    @include global;
+    &:before, 
+    &:after{
+        background-color: $bgColor;
+        transform: translate(-13%,-190%) rotate(-30deg);
+        transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+    }
+    &:after{
+        transition-delay: 0.2s;
+    }
+    &:hover {
+        &:before, 
+        &:after{
+            transform: translate(0,0);	
+        }
+    }
+}

@@ -1,0 +1,19 @@
+/* Icon Spin */
+@mixin icon-spin {
+	@include hacks();
+
+	.hvr-icon {
+		transition-duration: 1s;
+		transition-property: transform;
+		transition-timing-function: ease-in-out;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+
+		.hvr-icon {
+			transform: rotate(360deg);
+		}
+	}
+}

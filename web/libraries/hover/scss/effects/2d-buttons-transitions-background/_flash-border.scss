@@ -1,0 +1,22 @@
+@mixin flash-border {
+    @include global;
+    &:before{
+        height: 1px;
+        transition: all 0.5s;
+        transform: translate(-100%, -600%)  rotate(30deg);
+        transition-timing-function: cubic-bezier(0.75, 0, 0.125, 1);
+        background-color: $white;
+        bottom: 0;
+	    top: inherit;
+    }
+    &::after{
+        display: none;
+    }
+    &:hover{
+        border-color: transparent;
+        background: transparent;
+        &:before{
+            transform: translate(0,0);	
+        }
+    }
+}

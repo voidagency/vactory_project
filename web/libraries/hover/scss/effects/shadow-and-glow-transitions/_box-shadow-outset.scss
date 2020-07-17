@@ -1,0 +1,12 @@
+/* Box Shadow Outset */
+@mixin box-shadow-outset {
+	@include hacks();
+	transition-duration: $mediumDuration;
+	transition-property: box-shadow;
+
+	&:hover,
+	&:focus,
+	&:active {
+		box-shadow: 2px 2px 2px $shadowColor;
+	}
+}

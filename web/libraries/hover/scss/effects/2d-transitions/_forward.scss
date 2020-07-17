@@ -1,0 +1,12 @@
+/* Forward */
+@mixin forward {
+	@include hacks();
+	transition-duration: $mediumDuration;
+	transition-property: transform;
+
+	&:hover,
+	&:focus,
+	&:active {
+		transform: translateX(8px);
+	}
+}

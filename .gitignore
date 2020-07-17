@@ -18,3 +18,4 @@
 Desktop.ini
 # Ignore composer vendor directories.
 vendor
+web/themes/*/*/node_modules

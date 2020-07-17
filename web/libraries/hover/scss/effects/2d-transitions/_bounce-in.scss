@@ -1,0 +1,12 @@
+/* Bounce In */
+@mixin bounce-in {
+	@include hacks();
+	transition-duration: $slowDuration;
+
+	&:hover,
+	&:focus,
+	&:active {
+		transform: scale(1.2);
+		transition-timing-function: cubic-bezier(.47,2.02,.31,-0.36);
+	}
+}

@@ -1,0 +1,14 @@
+/* Border Fade */
+@mixin border-fade {
+	@include hacks();
+	transition-duration: $mediumDuration;
+	transition-property: box-shadow;
+
+	&:hover,
+	&:focus,
+	&:active {
+		box-shadow:
+			inset 0 0 0 $borderWidth $borderColor,
+			0 0 1px rgba(0, 0, 0, 0); /* Hack to improve aliasing on mobile/tablet devices */
+	}
+}

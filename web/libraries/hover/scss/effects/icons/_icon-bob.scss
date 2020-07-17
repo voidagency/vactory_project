@@ -1,0 +1,42 @@
+/* Icon Bob */
+@keyframes #{$nameSpace}-icon-bob {
+	0% {
+		transform: translateY(-6px);
+	}
+	50% {
+		transform: translateY(-2px);
+	}
+	100% {
+		transform: translateY(-6px);
+	}
+}
+
+@keyframes #{$nameSpace}-icon-bob-float {
+	100% {
+		transform: translateY(-6px);
+	}
+}
+
+@mixin icon-bob {
+	@include hacks();
+	transition-duration: $mediumDuration;
+
+	.hvr-icon {
+		transform: translateZ(0);
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+
+		.hvr-icon {
+			animation-name: #{$nameSpace}-icon-bob-float,#{$nameSpace}-icon-bob;
+			animation-duration: .3s, 1.5s;
+			animation-delay: 0s, .3s;
+			animation-timing-function: ease-out, ease-in-out;
+			animation-iteration-count: 1, infinite;
+			animation-fill-mode: forwards;
+			animation-direction: normal, alternate;
+		}
+	}
+}

@@ -1,0 +1,21 @@
+/* Icon Float */
+@mixin icon-float {
+	@include hacks();
+	transition-duration: $mediumDuration;
+
+	.hvr-icon {
+		transform: translateZ(0);
+		transition-duration: $mediumDuration;
+		transition-property: transform;
+		transition-timing-function: ease-out;
+	}
+
+	&:hover,
+	&:focus,
+	&:active {
+
+		.hvr-icon {
+			transform: translateY(-4px);
+		}
+	}
+}

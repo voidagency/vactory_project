@@ -1,0 +1,42 @@
+{
+  "minify": true,
+  "options": [
+    "setClasses"
+  ],
+  "feature-detects": [
+    "test/fullscreen-api",
+    "test/geolocation",
+    "test/history",
+    "test/input",
+    "test/inputtypes",
+    "test/postmessage",
+    "test/svg",
+    "test/touchevents",
+    "test/css/animations",
+    "test/css/backgroundsizecover",
+    "test/css/columns",
+    "test/css/exunit",
+    "test/css/filters",
+    "test/css/flexbox",
+    "test/css/invalid",
+    "test/css/objectfit",
+    "test/css/reflections",
+    "test/css/remunit",
+    "test/css/supports",
+    "test/css/target",
+    "test/css/transforms",
+    "test/css/transformslevel2",
+    "test/css/transitions",
+    "test/css/userselect",
+    "test/css/valid",
+    "test/css/vhunit",
+    "test/css/will-change",
+    "test/css/wrapflow",
+    "test/forms/placeholder",
+    "test/forms/validation",
+    "test/network/fetch",
+    "test/svg/filters",
+    "test/window/matchmedia",
+    "test/workers/webworkers"
+  ]
+}
