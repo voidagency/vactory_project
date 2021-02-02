@@ -36,11 +36,11 @@
     "require": {
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
-        "drupal/core-composer-scaffold": "^8.9.1",
-        "drupal/core-project-message": "^8.9.1",
-        "drupal/core-recommended": "^8.9.1",
-        "voidagency/vactory": "^2.0",
-        "voidagency/vactory_theme": "^1.0"
+        "drupal/core-composer-scaffold": "^8.9.13",
+        "drupal/core-project-message": "^8.9.13",
+        "drupal/core-recommended": "8.9.13",
+        "voidagency/vactory": "2.x-dev",
+        "voidagency/vactory_theme": "1.x-dev"
     },
     "require-dev": {
         "drupal/core-dev": "^8.9.1",

@@ -217,3 +217,12 @@ namespace :drush do
     end
   end
 end
+
+# This task only print a simple message to prevent "Don't know how to build task 'with_no_backup'"  warning
+# at the end of deployment.
+class String
+def green; "\e[32m#{self}\e[0m" end
+end
+task :with_no_backup do
+  puts "** Deployment done successfully with no backup! **".green
+end

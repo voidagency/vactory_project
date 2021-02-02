@@ -4,11 +4,23 @@ lock "~> 3.11.0"
 set :application, "vactory8"
 set :repo_url, "git@bitbucket.org:adminvoid/vactory8.git"
 set :linked_files, fetch(:linked_files, []).push('sites/default/settings.local.php')
+set :linked_files, fetch(:linked_files, []).push('sites/default/services.yml')
 set :linked_dirs, fetch(:linked_dirs, []).push('sites/default/files')
 set :linked_dirs, fetch(:linked_dirs, []).push('sites/default/private')
 set :keep_releases, 5
+set :keep_db_backups, 5
 set :app_path, '.'
 set :deploy_via, :remote_cache
+
+# Having control on enabling/disabling backup during deployment.
+# For deploying with backup: $ bundle exec cap staging deploy
+# For deploying with no backup: $ bundle exec cap staging deploy with_no_backup
+set :with_no_backup, 0
+ARGV.each do |a|
+  if a == 'with_no_backup'
+    set :with_no_backup, 1
+  end
+end
 
 # @todo: use full path or "#{shared_path.join("composer.phar")}" > shared_path gives wrong path
 SSHKit.config.command_map[:composer] = "composer"
@@ -56,20 +68,26 @@ namespace :vactory8 do
   task :deploy do
     on roles(:app) do
 
+      info "Puts site offline "
+      invoke "drupal:site_offline"
+
       info "Clear Drush Cache"
       invoke "drupal:drush_clear_cache"
 
-      execute :mkdir, "-p ~/databases-backup"
-      within release_path.join(fetch(:app_path)) do
-        info "Backup Database"
-        execute :drush, "sql-dump > ~/databases-backup/db-#{Time.now.strftime("%m-%d-%Y--%H-%M-%S")}.sql"
+      info "Clear cache"
+      invoke "drupal:cache:clear"
+
+      if fetch(:with_no_backup) == 0
+        execute :mkdir, "-p ~/databases-backup"
+          within release_path.join(fetch(:app_path)) do
+            info "Backup Database"
+            execute :drush, "sql-dump > ~/databases-backup/db-#{Time.now.strftime("%m-%d-%Y--%H-%M-%S")}.sql"
+            purge_old_backups()
+          end
       end
 
       #info "Backup Database"
       #invoke "drupal:backupdb"
-
-      info "Puts site offline "
-      invoke "drupal:site_offline"
 
       within release_path.join(fetch(:app_path)) do
         info "advagg-caf"
@@ -78,12 +96,6 @@ namespace :vactory8 do
         #info "advagg-cdc"
         #execute :drush, 'advagg-cdc'
       end
-
-      info "Puts site on line "
-      invoke "drupal:site_online"
-
-      info "Clear cache"
-      invoke "drupal:cache:clear"
 
     end
   end
@@ -139,7 +151,7 @@ namespace :vactory8 do
    task :apply_htaccess_patch do
        on roles(:app) do
            if fetch(:instance_type, 'preprod') != 'production'
-               execute 'cat ~/public_html/assets/.custom_htaccess >> ~/public_html/web/.htaccess'
+               execute 'cat ~/public_html/.custom_htaccess >> ~/public_html/.htaccess'
            end
        end
    end
@@ -150,14 +162,65 @@ namespace :vactory8 do
            info "Apply Permissions -d 755 -f 644"
            within release_path.join(fetch(:app_path)) do
                info "#{release_path}/"
-               execute :find, "#{release_path}/", " -type d -exec chmod u=rwx,g=rx,o=rx '{}' ';'"
-               execute :find, "#{release_path}/", " -type f -exec chmod u=rw,g=r,o=r '{}' ';'"
+               execute :find, "#{release_path}/", " -type d -exec chmod u=rx,g=rx,o=rx '{}' ';'"
+               execute :find, "#{release_path}/", " -type f -exec chmod u=r,g=r,o=r '{}' ';'"
+               execute :find, "#{release_path}/sites/default/settings.php", " -type f -exec chmod u=r,g=r,o= '{}' ';'"
+               execute :find, "~/shared/sites/default/settings.local.php", " -type f -exec chmod u=r,g=r,o= '{}' ';'"
+               execute :find, "~/shared/sites/default/", " -type d -exec chmod u=rwx,g=rwx,o=rx '{}' ';'"
            end
        end
    end
 
+   desc 'Remove files presenting security risk'
+      task :remove_security_files do
+          on roles(:app) do
+              info "Remove files presenting security risk"
+              within release_path.join(fetch(:app_path)) do
+                  execute 'rm ~/public_html/core/install.php'
+                  execute 'rm ~/public_html/core/package.json'
+                  execute 'rm ~/public_html/core/yarn.lock'
+                  execute 'rm ~/public_html/update.php'
+                  execute 'rm ~/public_html/web.config'
+                  execute 'rm ~/public_html/LICENSE.txt'
+                  execute 'rm ~/public_html/install_dev.sh'
+                  execute 'rm ~/public_html/sonar-project.properties'
+                  execute 'rm ~/public_html/example.gitignore'
+                  execute 'rm ~/public_html/.factory-release.txt'
+                  execute 'rm -rf ~/public_html/Docker'
+                  execute 'rm -rf ~/public_html/core/scripts'
+                  execute 'rm -rf ~/public_html/core/tests'
+                  execute 'rm -rf ~/public_html/capistrano'
+                  execute 'rm -rf ~/public_html/docs_factory'
+                  execute 'rm ~/public_html/themes/*/config.json'
+                  execute 'rm ~/public_html/themes/*/gulpfile.js'
+                  execute 'rm ~/public_html/themes/*/package.json'
+                  execute 'rm ~/public_html/themes/*/package-lock.json'
+                  execute :find, "#{release_path}/libraries/", " -name test -type d -exec rm -r {} +"
+                  execute :find, "#{release_path}/libraries/", " -name tests -type d -exec rm -r {} +"
+                  execute :find, "#{release_path}/libraries/", " -name '*.php' -type f -exec rm -r {} +"
+                  execute :find, "#{release_path}/libraries/*/", " -name '*.md' -type f -exec rm -r {} +"
+              end
+          end
+      end
+
+   desc 'Delete old backups'
+     def purge_old_backups()
+         max_keep = fetch(:keep_db_backups, 5).to_i
+         backup_files = capture("ls -t ~/databases-backup/db-*.sql").split.reverse
+         if max_keep >= backup_files.length
+           info "No old database backups to clean up"
+         else
+           info "Keeping #{max_keep} of #{backup_files.length} database backups"
+           delete_backups = (backup_files - backup_files.last(max_keep)).join(" ")
+           execute :rm, "-rf #{delete_backups}"
+         end
+      end
+
   after 'deploy:updated', 'vactory8:deploy'
+  after 'deploy:failed', 'drupal:site_online'
   before 'deploy:finishing', 'vactory8:cleanup_settings_permission'
   after 'deploy:finishing', 'vactory8:apply_htaccess_patch'
+  after 'deploy:finished', 'vactory8:remove_security_files'
   after 'deploy:finished', 'vactory8:apply_permissions'
+  after 'deploy:finished', 'drupal:site_online'
 end
